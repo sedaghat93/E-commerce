@@ -1,14 +1,18 @@
 import "./Navbar.scss";
+import { useEffect } from "react";
 import {Link} from "react-router-dom";
 import { useSelector, useDispatch} from 'react-redux';
 import { setSidebarOn } from '../../store/sidebarSlice';
-import { getAllCategories } from '../../store/categorySlice';
+import { getAllCategories, fetchAsyncCategories } from '../../store/categorySlice';
 
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const categories = useSelector(getAllCategories);
 
+  useEffect(()=>{
+    dispatch(fetchAsyncCategories());
+  },[dispatch]);
 
   return (
     <nav className='navbar'>

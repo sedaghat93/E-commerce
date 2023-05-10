@@ -1,6 +1,6 @@
 import './App.scss';
-import {BrowserRouter, Routes, Router} from "react-router-dom";
-import { HomePage, CartPage, CategoryProduct, ProductSingle, Search } from './pages/index';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { HomePage } from './pages/index';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Sidebar from './Components/Sidebar/Sidebar';
@@ -14,6 +14,10 @@ function App() {
         <BrowserRouter>
           <Header/>
           <Sidebar/>
+
+          <Routes>
+            <Route path='/' element={<HomePage/ >} />
+          </Routes>
         </BrowserRouter>
       </Provider>
     </div>
