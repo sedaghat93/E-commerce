@@ -14,7 +14,7 @@ const HomePage = () => {
     const categories = useSelector(getAllCategories);
 
     useEffect(()=>{
-        dispatch(fetchAsyncProducts(50));
+        dispatch(fetchAsyncProducts(30));
     },[]);
     
     const products = useSelector(getAllProducts);
@@ -25,10 +25,9 @@ const HomePage = () => {
     if(products.length > 0){
       for(let i in products){
         let randomIndex = Math.floor(Math.random() * products.length);
-        
+
         while(tempProducts.includes(products[randomIndex])){
             randomIndex = Math.floor(Math.random() * products.length);
-            console.log(randomIndex);
         }
         tempProducts[i] = products[randomIndex];
         }
