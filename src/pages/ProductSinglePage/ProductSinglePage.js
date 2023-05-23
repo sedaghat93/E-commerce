@@ -6,8 +6,9 @@ import { fetchAsyncProductSingle, getProductSingle, getProductSingleStatus } fro
 import { STATUS } from '../../utils/status';
 import Loader from '../../Components/Loader/Loader';
 import { formatPrice } from '../../utils/helper';
+import { addToCart, getCartMessageStatus, setCartMessageOff, setCartMessageOn } from '../../store/cartSlice';
+import CartMessage from '../../Components/CartMessage/CartMessage';
 
-console.log("hi single product");
 
 const ProductSinglePage = () => {
 
@@ -16,12 +17,18 @@ const ProductSinglePage = () => {
     const product = useSelector(getProductSingle);
     const productSingleStatus = useSelector(getProductSingleStatus);
     const [quantity, setQuantity] = useState(1);
+    const cartMessageStatus = useSelector(getCartMessageStatus);
 
 
     // getting single product
     useEffect(() => {
         dispatch(fetchAsyncProductSingle(id));
-    }, []);
+        if(cartMessageStatus){
+            setTimeout(() => {
+                dispatch(setCartMessageOff());
+            },2000)
+        }
+    }, [cartMessageStatus]);
 
     let discountedPrice = (product?.price) - (product?.price * (product?.discountPercentage / 100));
     if(productSingleStatus === STATUS.LOADING) {
@@ -44,7 +51,13 @@ const ProductSinglePage = () => {
         })
     }
     
+    const addToCartHandler = (product) => {
+        let discountedPrice = (product?.price) - (product?.price * (product?.discountPercentage/100));
+        let totalPrice = quantity * discountedPrice;
 
+        dispatch(addToCart({...product, quantity:quantity, totalPrice, discountedPrice}));
+        dispatch(setCartMessageOn(true));
+    }
 
     return (
         <main className='py-5 bg-whitesmoke'>
@@ -151,7 +164,7 @@ const ProductSinglePage = () => {
                                     <div className='btns'>
                                         <button type='button' className='add-to-cart-btn btn'>
                                             <i className='fas fa-shopping-cart'></i>
-                                            <span className='btn-text mx-2'>add to cart</span>
+                                            <span className='btn-text mx-2' onClick={()=>addToCartHandler(product)}>add to cart</span>
                                         </button>
                                         <button type='button' className='buy-now btn mx-3'>
                                             <span className='btn-text'>buy now</span>
@@ -164,6 +177,7 @@ const ProductSinglePage = () => {
                     </div>
                 </div>
             </div>
+            {cartMessageStatus && <CartMessage/>}
         </main>
   )
 }
