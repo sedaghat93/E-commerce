@@ -1,7 +1,7 @@
 import HomePage from "./HomePage/HomePage"; 
 import CartPage from "./CartPage/CartPage";
-import CategoryProducts from "./CategoryProduct/CategoryProduct";
+import CategoryProductPage from "./CategoryProduct/CategoryProductPage";
 import ProductSinglePage from "./ProductSinglePage/ProductSinglePage";
-import Search from "./Search/Search";
+import SearchPage from "./SearchPage/SearchPage";
 
-export {HomePage, CartPage, CategoryProducts, ProductSinglePage, Search} 
+export {HomePage, CartPage, CategoryProductPage, ProductSinglePage, SearchPage} 

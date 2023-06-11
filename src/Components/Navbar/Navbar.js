@@ -1,18 +1,30 @@
 import "./Navbar.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import { useSelector, useDispatch} from 'react-redux';
 import { setSidebarOn } from '../../store/sidebarSlice';
 import { getAllCategories, fetchAsyncCategories } from '../../store/categorySlice';
+import { getAllCarts, getCartItemCount, getCartTotal } from "../../store/cartSlice";
+import CartModal from "../CartModal/CartModal";
+import { isVisible } from "@testing-library/user-event/dist/utils";
 
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const categories = useSelector(getAllCategories);
+  const carts = useSelector(getAllCarts);
+  // console.log(carts);
+  const itemsCount = useSelector(getCartItemCount);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearchTerm = (e) => {
+    e.preventDefault();
+    setSearchTerm(e.target.value);
+  }
 
   useEffect(()=>{
-    dispatch(fetchAsyncCategories());
-  },[dispatch]);
+    dispatch(getCartTotal());
+  },[carts]);
 
   return (
     <nav className='navbar'>
@@ -33,12 +45,12 @@ const Navbar = () => {
 
         <div className='navbar-collapse w-100'>
           <div className='navbar-search bg-white'>
-            {/* <div className='flex align-center'>
+            <div className='flex align-center'>
               <input type = "text" className='form-control fs-14' placeholder='Search your preferred items here' onChange={(e) => handleSearchTerm(e)} />
               <Link to = {`search/${searchTerm}`} className='text-white search-btn flex align-center justify-center'>
                   <i className='fa-solid fa-magnifying-glass'></i>
                 </Link>
-            </div> */}
+            </div>
           </div>
 
           <ul className='navbar-nav flex align-center fs-12 fw-4 font-manrope'>
@@ -54,11 +66,11 @@ const Navbar = () => {
         </div>
 
         <div className='navbar-cart flex align-center'>
-          {/* <Link to = "/cart" className='cart-btn'>
+          <Link to = "/cart" className='cart-btn'>
             <i className='fa-solid fa-cart-shopping'></i>
             <div className='cart-items-value'>{itemsCount}</div>
-            <CartModal carts = {carts} />
-          </Link> */}
+            {/* <CartModal carts = {carts} /> */}
+          </Link>
         </div>
       </div>
     </nav>

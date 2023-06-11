@@ -1,0 +1,82 @@
+@import '../../App.scss';
+
+.cart{
+    .container{
+        height: auto;
+
+        .cart-ctable{
+            background-color: $clr-whitesmoke;
+            display: grid;
+    
+    
+            .cart-chead{
+                margin: 2rem 0;
+                .cart-ctr{
+                    background-color: $clr-white;
+                    display: grid;
+                    grid-template-columns: .5fr 2fr 1fr 1fr 1fr 1fr;
+                    align-items: center;
+                    justify-items: center;
+                }      
+            }
+    
+            .cart-cbody{
+                // width: 100%;
+    
+                .cart-ctr{
+                    // background-color: #f704ae;
+                    display: grid;
+                    grid-template-columns: .5fr 2fr 1fr 1fr 1fr 1fr;
+                    justify-items: center;
+    
+                    .cart-ctd{
+                        background-color: $clr-white;    
+                        padding: 3px;            
+                        display: flex;
+                        align-items: center;
+    
+                        .qty-change{
+    
+                            border: 1px solid #e7e7e7;
+                            outline: none;
+    
+                            .qty-decrease, .qty-increase {
+                                padding: 4px;
+    
+                                i{
+                                    font-weight: 600;
+                                }
+                            }
+    
+                            .qty-value{
+                                padding:0 10px;
+                                border-left: 1px solid #e7e7e7;
+                                border-right: 1px solid #e7e7e7;
+                            }
+                        }
+    
+                    }
+    
+                }
+            }
+    
+            .cart-cfoot{
+                margin: 15px 0;
+                height: auto;
+                .cart-cfoot-l{
+    
+                    margin-left: 3rem;
+                    .clear-cart-btn{
+                        border: 1px solid $clr-orange;
+                        padding: 5px;
+                    }
+                }
+    
+                .cart-cfoot-r{
+                    margin-right: 3rem;
+                }
+            }
+        }
+    }
+
+}

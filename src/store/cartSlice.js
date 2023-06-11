@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const fetchFromLocalStorage = () => {
-    let cart = localStorage.getItem('cart');
-    if(cart){
-        return JSON.parse(localStorage.getItem('cart'));
+    let carts = localStorage.getItem('cart');
+    if(carts){
+        let data = JSON.parse(localStorage.getItem('cart'));
+        return data;
     }else{
         return [];
     }
@@ -50,7 +51,7 @@ const cartSlice = createSlice({
             }
         },
 
-        removeFormatCart:(state,action) => {
+        removeFromCart:(state,action) => {
             const tempCart = state.carts.filter(item => item.id !== action.payload);
             state.carts = tempCart;
             storeInLocalStorage(state.carts);
@@ -108,8 +109,9 @@ const cartSlice = createSlice({
     }
 });
 
-export const {addToCart, setCartMessageOn, setCartMessageOff, toggleCartQty, getCartTotal, clearCart } = cartSlice.actions;
+export const {addToCart, setCartMessageOn, setCartMessageOff, toggleCartQty, getCartTotal, clearCart, removeFromCart } = cartSlice.actions;
 export const getCartMessageStatus = (state) => state.cart.isCartMessageOn;
 export const getAllCarts = (state) => state.cart.carts;
 export const getCartItemCount = (state) => state.cart.itemsCount;
+
 export default cartSlice.reducer;
