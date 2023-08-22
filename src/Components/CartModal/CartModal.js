@@ -4,8 +4,8 @@ import { formatPrice } from "../../utils/helper";
 
 const CartModal = ({carts}) => {
     return ( 
-        <div className='cart-modal'>
-            <div className='container'>
+        <div className='container cart-hover'>
+            <div className='cart-modal'>
                 <h5 className='fw-8 fs-15 font-manrope flex text-center justify-center text-dark py-2'>
                     Recently Added Products
                 </h5>

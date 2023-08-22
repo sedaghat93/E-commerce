@@ -1,8 +1,8 @@
 @import "../../App.scss";
 // @import "../Navbar/Navbar.scss";
 
-
 .cart-modal{
+    display: none;
     height: calc(540px - 40px);
     width: 35rem;
     max-width: 600px;
@@ -16,7 +16,7 @@
     border-radius: 6px;
     padding: 20px;
     box-shadow: -6px 10px 25px #a3a3a3;
-    opacity: 0;
+    // opacity: 0;
     overflow-y: scroll;
 
     .cart-modal-list{

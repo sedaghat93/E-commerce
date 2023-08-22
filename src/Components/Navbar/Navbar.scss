@@ -86,12 +86,12 @@
                 align-items: center;
                 justify-content: center;
             }
-
-            &:hover{
-                .cart-modal{
-                    opacity: 1;
-                    visibility: visible;
-                }
+        }
+        .cart-btn:hover{
+            .cart-modal{
+                // opacity: 1;
+                // visibility: visible;
+                display: block;
             }
         }
     }

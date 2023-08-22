@@ -6,7 +6,6 @@ import { setSidebarOn } from '../../store/sidebarSlice';
 import { getAllCategories, fetchAsyncCategories } from '../../store/categorySlice';
 import { getAllCarts, getCartItemCount, getCartTotal } from "../../store/cartSlice";
 import CartModal from "../CartModal/CartModal";
-import { isVisible } from "@testing-library/user-event/dist/utils";
 
 
 const Navbar = () => {
@@ -69,7 +68,7 @@ const Navbar = () => {
           <Link to = "/cart" className='cart-btn'>
             <i className='fa-solid fa-cart-shopping'></i>
             <div className='cart-items-value'>{itemsCount}</div>
-            {/* <CartModal carts = {carts} /> */}
+            <CartModal carts = {carts} />
           </Link>
         </div>
       </div>

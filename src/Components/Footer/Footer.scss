@@ -1,9 +1,11 @@
 .footer{
-    // position:sticky;
-    bottom: 0;
+    position:absolute;
+    bottom: -1 !important;
+    margin-top: 5px;
     width: 100%;
     .copyright-text{
         display: block;
         margin-top: 0.7rem;
+        // position: fixed;
     }
 }

@@ -1,1 +1,1 @@
-.footer{bottom:0;width:100%}.footer .copyright-text{display:block;margin-top:.7rem}
+.footer{position:absolute;bottom:-1 !important;margin-top:5px;width:100%}.footer .copyright-text{display:block;margin-top:.7rem}
